@@ -65,7 +65,7 @@
                 <div class="row align-items-center text-center banner-content">
                     <div class="col-lg-12">
                         <h1 class="text-white" style="text-align: center">Project Blog</h1>
-                        <br>
+                        <br><br>
                         <p>Read about the progress of the project.</p>
                     </div>
                 </div>
@@ -77,32 +77,108 @@
 	<!-- Start post-content Area -->
     <section class="post-content-area single-post-area section-gap">
         <div class="container">
+			<a class="anchor" id="blog-4"></a>
+            <h3>February 12, 2021 - Mechanical and electrical integration</h3>
+            <pre></pre>
+            <p>
+                Once the peristaltic pump was tested by the electrical team to ensure it would meet specs, pumps and some additional components were ordered by the mechanical team to complete assembly. 
+                A protoboard was soldered to distribute the 12V to two separate channels each with a pair of smoothing capacitors to power the two pumps. 3D prints were found to have suitable strength, proving a suitable 
+                alternative to the aluminum parts given the current manufacturing situation. Figure 5 and 6 below show the wiring, and scale assembly respectively.
+                <figure>
+                    <img src="img/mech-scale.jpeg" width="100" class="center">
+                    <figcaption class="text-center"> Figure 6: mechanical team wiring, scale, and 3D print assembly</figcaption>
+                </figure>
+                <br>
+                <figure>
+                    <img src="img/mech-wires.jpeg" width="100" class="center">
+                    <figcaption class="text-center"> Figure 5: mechanical team adruino wiring for pump testing</figcaption>
+                </figure>
+
+                <br><br>To test the pumps, basic Arduino code was used to vary speed based on a potentiometer input. 
+                A potential risk moving forward is the resistance of the pump tubing which created uncertainty in the mass measurement and made it challenging to keep the pump tubing submerged. 
+                In the coming week, a protective enclosure will be printed to house the protoboard, switches, and Raspberry Pi, completing the mechanical assembly. 
+                It will then be handed off to the software team to begin integration with the controls software. An RS-232 to USB cable was sourced to interface between the scale and RPi. 
+                Below is a video of the pumps running with an item on the scale.
+                <iframe width="300" height="400" class="center"
+                    src="https://www.youtube.com/embed/GninDzAAE_s">
+                </iframe> 
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+
+        <div class="container">
+			<a class="anchor" id="blog-3"></a>
+            <h3>February 5, 2021 - Electrical build and validation</h3>
+            <pre></pre>
+            <p>
+                Components finished shipping to the electrical team in British Columbia this week, so progress started on the electrical build and validation. The RPi4 was programmed using python to generate PWM signals for the pump. 
+                The PWM signals are passed through a PWM switch to isolate the RPi’s 3.3V logic voltage, and the 12V high-current power rail used for the pumps. Below in Figure 3 the electrical schematic is shown. 
+                Note the schematic is for a single pump, and the wiring is duplicated for any additional pump.
+                <figure>
+                    <img src="img/schematic.png" width="100" class="center">
+                    <figcaption class="text-center"> Figure 3: updated schematic for pump wiring</figcaption>
+                </figure>
+                <br><br>The pump was tested and successfully validated for the project’s specifications. 
+                The minimum and maximum dispense rates were measured by pumping 0.5L up a height of 0.5m multiple times to get a representative average:
+                <br>• Low end dispense rate: 0.233 mL/sec
+                <br>• High end dispense rate: 7.22 mL/sec
+                <br><br>The pump rate on the product spec promised 8.33 mL/sec, but the tested performance is lower by 13%. 
+                Such pump performance would enable a single pump to dispense 2L in 4.6 minutes. It may be unrealistic to source, order, and validate a new pump given the long shipping times. 
+                If controls is unable to guarantee a 5 minute total dispense time for a 2L diluted solution, the project constraints may be changed to accommodate the given equipment. Videos below show the pump working. 
+                <br><br>PWM frequency was tuned for this specific pump. Starting at 10 Hz, it was increased until 20 Hz, where the pump motion was steady for any given speed, and the dispense rate was still high. 
+                It is extra important to find a good PWM frequency for this setup, as this pump has 3 rollers that tend to accelerate when a pair of them is around the in/out valves, and leads to unequal dispense rate vs time. 
+                The electrical team also noticed the power supply unit (PSU) was struggling with the fast switching, most likely designed for a constant current load. Thus, capacitors were added to the schematic to smooth out the current. 
+                1 mF capacitors will be placed in parallel with the input side of the PWM switch, each capacitor covering the load current for ~1 ms and changing the load seen by the PSU to one of more constant current. 
+                Two videos below show the pump in action, the first video showing speed control via PWM, and the second video showing a slow and steady dispense of liquid.
+                
+                <br>
+                <iframe width="300" height="400" class="center"
+                    src="https://www.youtube.com/embed/5vLAyPyWbyI">
+                </iframe> 
+                <br>
+                <iframe width="300" height="400" class="center"
+                    src="https://www.youtube.com/embed/ZTRiZccpMvc">
+                </iframe> 
+
+                <br><br>The next steps are to replicate and validate the setup with the mechanical team located in Ontario. Then, the mechanical assembly will be finished, and handed off to software for controls.
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+       
+        <div class="container">
 			<a class="anchor" id="blog-2"></a>
             <h3>January 31, 2021 - Starting the mechanical build</h3>
             <pre></pre>
             <p>
                 With a 3D printer acquired and the balance delivered, the mechanical team began manufacturing and assembly of the system. The first parts to be printed were a set of back and front feet to elevate the balance off the ground, allowing for electronics to be mounted in the space below. Working with the existing balance pieces, the 3D printed feet were retrofitted without the need of any additional hardware.
-                <br>The original design featured an aluminum box tube as the spine of the mechanical frame. However, limitations in machine shop availability led to experimentation with 3D printing this part in segments. The first attempt is seen in the picture below and connects via dovetail cutouts which can be further secured by epoxy. While the strength of the piece has been reduced there is the option of printing the parts solid if further reinforcement is required. 
-                <br>Looking ahead to next week, pump testing is the primary goal to enable the completion of the mechanical design. 
+                <br><br>The original design featured an aluminum box tube as the spine of the mechanical frame. However, limitations in machine shop availability led to experimentation with 3D printing this part in segments. The first attempt is seen in the picture below and connects via dovetail cutouts which can be further secured by epoxy. While the strength of the piece has been reduced there is the option of printing the parts solid if further reinforcement is required. 
+                <br><br>Looking ahead to next week, pump testing is the primary goal to enable the completion of the mechanical design. 
             </p>
-            <img src="img/scale.jpg" width="100" class="center">
+            <figure>
+                <img src="img/scale.jpg" width="100" class="center">
+                <figcaption class="text-center"> Figure 2: scale with 3D printed feed and stand</figcaption>
+            </figure>
         </div>
-
-        <div class="container section-gap">
+        <div class="section-gap-top"></div>
+        
+        <div class="container">
 			<a class="anchor" id="blog-1"></a>
             <h3>January 22, 2021 - Part sourcing and ordering</h3>
             <pre></pre>
             <p>
                 This week the team put together a final partslist for the electrical system. This required finalizing the components and ensuring they would be able to fit the specs. Waterproof thermometers were found, but because it was unknown whether they could withstand acid the team solved the problem by planning to submerge the thermometers in a sealed water-filled container, and place the acid-proof container into acid. This way the temperature is still recorded with reasonable latency, while protecting the equipment.
-                <br>A peristaltic pump was found, which on paper should be able to perform both the coarse and fine fluid transfers. To test the pump and develop the rest of the system, the following components were ordered:
+                <br><br>A peristaltic pump was found, which on paper should be able to perform both the coarse and fine fluid transfers. To test the pump and develop the rest of the system, the following components were ordered:
                 <br>• Raspberry Pi 4 set (includes power supply, memory, everythign to get started)
                 <br>• High-side switches up to 35V (to be used for pump motor PWM control)
                 <br>• Electrical workbench supplies (breadboard, wires, diodes, etc...
                 <br>• 12V 6A power supply
                 <br>• Pump
-                <br>A plan is in place to set up a linux environment on the RPi and use it to control pump speed via PWM and validate the pump. The pump is shown in the image below:
+                <br><br>A plan is in place to set up a linux environment on the RPi and use it to control pump speed via PWM and validate the pump. The pump is shown in the image below:
             </p>
-            <img src="img/pump.jpg" width="100" class="center">
+            <figure>
+                <img src="img/pump.jpg" width="100" class="center">
+                <figcaption class="text-center"> Figure 1: selected peristaltic pump</figcaption>
+            </figure>
         </div>
     </section>
     <!-- End post-content Area -->
@@ -112,14 +188,14 @@
         <pre></pre>
 
         <div class="container">
-            <img src="img/logo.png" width="200"><br>
+            <img src="img/logo.png" width="200"><br><br>
 
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            All rights reserved<br>This website was made with the help of <a style="color:grey;" target="_blank" href="https://colorlib.com">Colorlib
+            All rights reserved<br><br>This website was made with the help of <a style="color:grey;" target="_blank" href="https://colorlib.com">Colorlib
 			</a>
         </div>
     </footer>
