@@ -77,6 +77,72 @@
 	<!-- Start post-content Area -->
     <section class="post-content-area single-post-area section-gap">
         <div class="container">
+			<a class="anchor" id="blog-8"></a>
+            <h3>April 14, 2021 - A Final Farewell</h3>
+            <pre></pre>
+            <p>
+            This final week has been the final week of the capstone project, symbolically ending on the same day as the rest of the team’s classes. The five year climb of completing one’s introduction to formal education is so close to being finished that each member of the team can all but feel their graphite pickaxes make their last strike. The combined will to prevent an extension to this experience gave the team members a wind which, as they could hold themselves up no longer, pushed them over the finish line even if by a single hair. Separately rallied on the day of demonstration the team was able to convey the success of the project which exemplified all that the program prepared them for. The video below is a testament to a project which exceeded all expectations of the faculty, and is chosen to be kept on the permanent record of the internet to show the capabilities of a multidisciplinary group of engineering students standing on a combined 25 years of formal education. 
+            <br>
+            <br>
+            As the beginning of a new life is in the line of sight of each team member, they all take a minute to recall a few moments when their paths crossed, remembering the people who made the experience a shared one. And though the future is veiled in mist, it is made of particles no different than those already walked through, and indeed the same ones making up the world right now. Some things are lost to history with every passing increment of time, but time remains. And as long as time remains, an hourglass will keep it.
+            <br>
+            <br>
+            Farewell,
+            <br> 
+            Team Hourglass
+                                
+            <iframe width="300" height="400" class="center"
+                    src="https://www.youtube.com/watch?v=z33n8ZfLiwk">
+            </iframe> 
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+
+        <div class="container">
+			<a class="anchor" id="blog-7"></a>
+            <h3>March 26, 2021 - Preparing for Capstone Presentation</h3>
+            <pre></pre>
+            <p>
+            This week with the poster deliverable due, focus shifted to compiling group progress thus far and presenting it in captivating fashion. Hayden having completed extensive testing allowed for statistical analysis of the dilutions from a range of input concentrations, output concentrations, and output volumes. Fraser completed renders of the final design in CAD and created the poster using Keynote. Similar to the design intent, emphasis was placed on simplicity while also providing a rich data driven context for the design process. After team feedback, the poster was polished up and ready for the deadline. 
+            <br>
+            Footage for the marketing video was filmed by Hayden over the past few weeks, and Ion narrated and edited the video together into the instant classic seen below, turning Hourglass into a household name:                
+            <iframe width="300" height="400" class="center"
+                    src="https://www.youtube.com/watch?v=PS5wn7Rue5E">
+            </iframe> 
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+
+        <div class="container">
+			<a class="anchor" id="blog-6"></a>
+            <h3>March 19, 2021 - Testing</h3>
+            <pre></pre>
+            <p>
+            This week’s main update is that testing is complete! A total of 48 tests over the full range of inputs, as well as 15 tests of repeatability were completed. The initial 48 tests showed that the system meets our constraints, and the 15 repeatability tests show reasonable variation in both errors and times.
+            <br>
+            Having completed implementing and testing the core functionality of the platform, the focus this week on the software side is making the platform easy to use. To this end, we decided to build a simple browser-based user interface with which users can simply enter their desired settings and click “Run”. To build the interface, a lightweight Flask server was added which runs continually on the Raspberry Pi and exposes a simple webpage on the local network. When the user connects to this webpage, they are provided with options to configure the system, run dilution processes, and view the results and data logs from these processes. The Flask server responds to the user’s requests by communicating with the core platform interface to run dilutions or fetch run data from the Raspberry Pi’s local storage. A high-level overview of the new software system incorporating the Flask server and UI is shown here:
+            <figure>
+                <img src="img/sw-schematic.png" width="100" class="center">
+            </figure>
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+
+        <div class="container">
+			<a class="anchor" id="blog-5"></a>
+            <h3>March 12, 2021 - RPi Software Development</h3>
+            <pre></pre>
+            <p>
+            On the software side, the last couple of weeks have focused on writing code to implement the core functions of the Hourglass system. This includes the peripheral device interfaces, feedback control system, and high-level API with which to interact with the system. The Raspberry Pi made it easy to set up serial and GPIO interfaces for reading and controlling the precision balance, temperature sensors, and pumps: each has its own simple interface which acts as a middleman between the main platform software module and the device itself. The tricky part was implementing the feedback system in order to meet the necessary maximum error and time constraints. To this end, two key changes allowed us to meet the specs. First, a two-stage feedback system is used to provide high-speed dispensing in early stages while also handling fine-grained control as the mass approaches its final target. This allowed us to meet our time constraint even when two litres are dispensed. Next, we observed that the dispensing of the chemical solution is the limiting factor in terms of minimizing concentration error. We improved this process by dynamically recomputing the required mass of water which would achieve the desired final concentration. As such, the platform will over-dispense water to account for over-dispensed chemical solution, which is possible due to the fact that the margin of error for dispensing water is significantly larger than that for dispensing chemical solution.
+
+            <br>
+            Having implemented the full functionality of the system, we turned our attention to testing. Our three system inputs are the input concentration, output concentration, and output volume. To cover the full range of all three inputs, we decided to conduct tests with inputs spanning the full range of each input parameter in a grid-like fashion. Additionally, we plan to conduct a repeatability experiment by running dispensing jobs with identical inputs multiple times, thereby allowing us to see the variation in errors and times over multiple runs. Testing is ongoing, and we expect to complete it in the next week or two.
+            </p>
+        </div>
+        <div class="section-gap-top"></div>
+
+
+        <div class="container">
 			<a class="anchor" id="blog-4"></a>
             <h3>February 12, 2021 - Mechanical and electrical integration</h3>
             <pre></pre>
